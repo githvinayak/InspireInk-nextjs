@@ -1,0 +1,102 @@
+.container {
+  margin-top: 50px;
+}
+.title {
+  color: black;
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+.write {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.btns {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  justify-content: flex-end;
+  visibility: hidden;
+  transition: all 1s;
+}
+.btn1 {
+  color: black;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 2px 5px;
+  transition: all .3s;
+  cursor: pointer;
+}
+.btn1:hover {
+  padding: 6px 10px;
+  background-color: rgba(229, 229, 229, 0.584);
+  border-radius: 12px;
+}
+.btn2 {
+  color: black;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 6px 10px;
+  background-color: rgba(229, 229, 229, 0.584);
+  border-radius: 12px;
+  cursor: pointer;
+}
+.blue {
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 6px 10px;
+    background-color: rgb(0, 166, 255);
+    border-radius: 12px;
+    cursor: pointer;
+  }
+.input {
+  padding: 10px 20px;
+  width: 100%;
+  border-bottom: 2px solid gray;
+  white-space: normal;
+}
+.input:focus {
+  outline: none;
+  border-bottom: 2px solid red;
+  transition: all 0.5s ease-in-out;
+}
+.input:focus + .btns{
+    visibility:visible
+}
+.user {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.userInfo {
+  display: flex;
+  gap: 10px;
+}
+.image {
+  border-radius: 50%;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+}
+.userComment{
+    display: flex;
+    flex-direction: column;
+}
+.comment {
+    margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.userName{
+    font-weight:500 ;
+}
+.date{
+    font-size: 14px;
+}
+.desc{
+    font-size: 18px;
+    font-weight: 300;
+}

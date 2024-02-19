@@ -1,0 +1,138 @@
+.active{
+    color:rgb(55 48 163 );
+    background-image: linear-gradient(to top right,#c7d2fe, #e0e7ff);
+  }
+
+  .arrow{
+    animation: slide1 1s ease-in-out infinite;
+  }
+  @keyframes slide1 {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+  
+    50% {
+      transform: translate(10px, 0);
+    }
+  }
+ 
+  .container {
+    margin-top: 30px;
+    display: flex;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+  }
+  .left,
+  .right {
+    position: relative;
+    display: flex;
+    gap: 50px;
+ 
+     
+  }
+  .description {
+    flex:1;
+    text-align: justify;
+    display: none;
+     transition: all 0.3s ease-out;
+  }
+  .image .img {
+    object-fit:cover;
+    object-position: center;
+    width: 480px;
+    height: 320px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2),
+      -5px -5px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+  }
+  .image h1 {
+    position: absolute;
+    bottom: 0px;
+    color: white;
+    padding: 15px;
+  }
+  .overlayTitle{
+    font-size: 40px;
+    font-weight: 600;
+    width: 100%;
+  }
+  .title{
+    margin-top: 10px;
+    font-size: 40px;
+    font-weight: 600;
+  }
+  .desc{
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .btn{
+    margin-top: 20px;
+    padding: 12px 24px;
+    border: none;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    width: max-content;  
+  }
+  .left:hover > .description {
+    display: block;
+  }
+  .left:hover > .image .overlayTitle {
+    display: none;
+  } 
+  
+  .right:hover > .description {
+    display: block;
+  }
+  .right:hover > .image .overlayTitle {
+    display: none;
+  }
+
+  @media screen and (max-width: 1280px) {
+    .image .img {
+      width: 400px;
+      flex:1;
+    }
+    .overlayTitle{
+      font-size: 30px;
+    }
+    .title{
+      font-size: 30px;
+    }
+    .desc{
+      font-size: 14px;
+      font-weight: 400;
+    }
+    .btn{
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      color: white;
+      background-color: black;
+      border-radius: 5px;
+      width: max-content;  
+    }
+   
+  }
+  @media screen and (max-width: 1024px) {
+    .right {
+     display: none;
+    }
+    .left:hover > .image .img {
+      width: 300px;
+      flex:1;
+    }
+   
+  }
+
+  .loginImg{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
