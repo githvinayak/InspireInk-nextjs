@@ -26,15 +26,15 @@ module.exports = {
        neu:["neu"]
       },
       colors: {
-        "primary": "#ECEEFF",
-        "coral-red": "#FF6452",
-        "slate-gray": "#6D6D6D",
-        "pale-blue": "#F5F6FF",
-        "white-400": "rgba(255, 255, 255, 0.80)",
+        "primary": "#24293E",
+        "secondary": "#2e3751",
+        "accent": "#8ebbff",
+        "text": "#F4f5fc"
       },
       screens: {
         "wide": "1536px",
-        "xsmall": "540px",
+        "xsmall": "480px",
+        "2xsmall":"380px"
       },
     },
   },

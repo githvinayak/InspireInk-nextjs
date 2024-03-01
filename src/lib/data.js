@@ -1,6 +1,6 @@
 const { NextResponse } = require("next/server")
 import { connectToDb } from "./connectDb"
-import prisma from "@/lib/connect";
+import prisma from "../../prisma/connect";
 
 export const getCategories = async ()=>{
     try {

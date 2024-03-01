@@ -11,6 +11,7 @@
   display: flex;
   align-items: flex-end;
   transition: 0.4s ease-out;
+  background-color: black;
 }
 .card:hover > .info {
   opacity: 1;

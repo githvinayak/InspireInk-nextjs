@@ -73,7 +73,9 @@
 }
 .userInfo {
   display: flex;
-  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 .image {
   border-radius: 50%;
@@ -94,7 +96,9 @@
     font-weight:500 ;
 }
 .date{
-    font-size: 14px;
+  margin-top: 2px;
+    font-size: 12px;
+    color:rgb(117, 117, 117)
 }
 .desc{
     font-size: 18px;

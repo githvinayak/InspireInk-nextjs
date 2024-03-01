@@ -4,26 +4,24 @@ import pic from "@/images/p1.jpeg";
 import Link from "next/link";
 import styles from "./card.module.css";
 
-const Card = () => {
+const Card = ({key,item}) => {
   return (
     <>
-      <div className={styles.wrapper}>
+      <div className={styles.wrapper} key={key}>
         <div className={styles.card}>
-          <Image src={pic} alt='pic' fill className={styles.img} />
+          { item.img && (<Image src={item.img} alt='pic' fill className={styles.img} />)}
           <div className={styles.info}>
-            <h1 className={styles.title}> This the post's title</h1>
-            <p className={styles.desc}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s.
-            </p>
+            <Link className={styles.title} href={`/posts/${item.slug}`}>
+            <h1 className={styles.title}> {item.title}</h1>
+            </Link>
+            <div className={styles.desc} dangerouslySetInnerHTML={{ __html: item?.desc.substring(0,60) }}/>
            <div className="flex flex-row justify-between items-end">
-           <Link className={styles.btn} href=''>
+           <Link className={styles.btn} href={`/posts/${item.slug}`}>
               Read more
             </Link>
             <div className="flex gap-2 font-bold">
-              <span>11.02.2023</span>
-              <span>Culture</span>
+              <span>  {item.createdAt.substring(0, 10)} -</span>
+              <span>{item.catSlug}</span>
             </div>
            </div>
           </div>

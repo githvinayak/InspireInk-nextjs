@@ -37,14 +37,14 @@ model Session {
 
 model User {
   id            String    @id @default(cuid()) @map("_id")
-  username          String?
+  name          String?
   email         String    @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
   Post          Post[]
-  Comment       Comment[]
+ Feedback      Feedback[]
 }
 
 model VerificationToken {
@@ -75,10 +75,11 @@ model Post {
   cat       Category  @relation(fields: [catSlug], references: [slug])
   userEmail String
   user      User      @relation(fields: [userEmail], references: [email])
-  comments  Comment[]
+  feedbacks  Feedback[]
 }
 
-model Comment {
+
+model Feedback {
   id        String   @id @default(cuid()) @map("_id")
   createdAt DateTime @default(now())
   desc      String

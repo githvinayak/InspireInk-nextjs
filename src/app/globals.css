@@ -3,10 +3,11 @@
 @tailwind utilities;
 
 :root {
-    --bg: white;
-    --textColor: black;
-    --softBg: #f0f0f0;
-    --softTextColor: #626262;
+    --primary: "#24293E",
+    --secondary: "#2e3751",
+    --accent: "#8ebbff",
+    --text: "#F4f5fc"
+    --bg:"#222837"
   }
   
   * {
@@ -16,6 +17,7 @@
   }
   
   body {
+    background-color:#24293E;
     max-width: 100%;
     height: 100vh;
     overflow-x: hidden;
