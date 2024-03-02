@@ -1,6 +1,7 @@
 .wrapper {
   display: flex;
   justify-content: space-around;
+  width: 100%;
 }
 .card {
   overflow: hidden;
@@ -62,6 +63,7 @@
 }
 .info {
 display: flex;
+width: 100%;
 gap: 10px;
 flex-direction: column;
   padding: 1.5rem;
@@ -104,19 +106,71 @@ flex-direction: column;
   .card{
     width: 360px;
   }
+  .btn{
+    padding-left: 0.2rem;
+  padding-right: 0.2rem;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  font-size: 12px;
+  }
 }
-@media screen and (max-width:1280px){
+@media screen and (max-width:1024px){
   .card{
     width: 450px;
   }
+  .btn{
+    padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  font-size: 15px;
+
+  }
 }
-@media screen and (max-width:640px){
+@media screen and (max-width:768px){
   .card{
     width: 380px;
   }
+  .btn{
+    padding-left: 0.6rem;
+  padding-right: 0.6rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  font-size: 16px;
+  }
 }
-@media screen and (max-width:540px){
+@media screen and (max-width:480px){
+  .card{
+    width: 340px;
+  }
+  .btn{
+    padding-left: 0.3rem;
+  padding-right: 0.3rem;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  font-size: 14px;
+  }
+}
+@media screen and (max-width:380px){
   .card{
     width: 320px;
   }
+  .btn{
+    padding-left: 0.2rem;
+  padding-right: 0.2rem;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  font-size: 14px;
+  }
+}
+@media screen and (max-width:480px){
+  .card{
+    width: 320px;
+  }
+}
+
+.bottom{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

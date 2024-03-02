@@ -36,9 +36,10 @@
   .title{
     font-size: 26px;
     font-weight: 800;
+    color: white;
   }
   .blueText{
-    color: rgb(0, 170, 255);
+    color: #8ebbff;
   }
   .form{
     display: flex;
@@ -52,28 +53,32 @@
     flex: 1;
   }
   .inputContainer .input{
-    border: 1px solid rgba(227, 227, 227, 0.747);
     padding:12px;
-    border-radius: 4px;
+    border-radius: 6px;
     width: 400px;
+    background-color: #2e3751;
   }
   .inputContainer input::placeholder{
     visibility:hidden;
   }
   .inputContainer .label{
     position:absolute;
+    color: white;
     top:0;
     left:10px;
     transform:translateY(50%);
     transition: transform 0.3s ease;
   }
   .inputContainer .input:focus {
-    outline-color: rgb(0, 170, 255);
+    outline-color: #8ebbff;
   }
   .inputContainer .input:focus + .label{
     transform:translateY(-50%);
-    color: rgb(0, 170, 255);
-    background-color:white;
+    color: #8ebbff;
+    padding-left: 2px;
+    padding-right: 2px;
+    border-radius: 5px;
+    background-color:#2e3751;
   }
   .inputContainer input:focus::placeholder{
     visibility:visible;
@@ -81,7 +86,7 @@
 
   .btn{
     flex: 1;
-    background-color:rgb(0, 170, 255) ;
+    background-color:#8ebbff ;
     color: white;
     text-align: center; 
     padding:10px 0px ;
@@ -98,13 +103,15 @@
     display: flex;
     font-size: 18px;
     font-weight: 600;
+    color: white;
   }
   .text2{
     margin:auto;
     font-size: 15px;
+    color: white;
   }
   .register{
-    color:rgb(0, 170, 255) ;
+    color:#8ebbff ;
     margin:0px 5px;
   }
   .text::before,
@@ -126,7 +133,8 @@
     width: 40px;
     padding: 4px;
     border-radius: 50%;
-    border: 1px solid rgba(227, 227, 227, 0.747);
+    border: 1px solid#8ebbff ;
+    background-color: #2e3751;
   }
 
   @media screen and (max-width: 1280px){

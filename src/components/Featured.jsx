@@ -10,17 +10,17 @@ import * as Icons from "react-icons/go";
 const Featured = () => {
   return (
     <>
-      <div className='flex max-xl:mb-24 flex-col h-screen box-border gap-8 max-sm:gap-0 py-8'>
+      <div className='flex max-xl:mb-24 flex-col h-screen max-xsmall:px-2 box-border gap-8 max-sm:gap-0 py-8'>
         <div className='flex max-sm:flex-col max-sm:items-start flex-[1] max-sm:gap-0 gap-8'>
           <div className=' flex-[6]  '>
-            <h1 className='bg-accent font-bold text-[50px] max-2xsmall:text-[27px] max-xsmall:text-[30] max-sm:text-[36px] max-md:text-[40px] max-lg:text-[42px] max-xl:text-[47px] mb-2 px-4 rounded-md table'>
+            <h1 className='bg-accent font-bold text-[50px] max-2xsmall:text-[27px] max-xsmall:text-[30px] max-sm:text-[36px] max-md:text-[40px] max-lg:text-[42px] max-xl:text-[47px] mb-2 px-4 rounded-md table'>
               Explore The
             </h1>
-            <h1 className='bg-accent font-bold text-[46px] max-2xsmall:text-[23px] max-xsmall:text-[26] max-sm:text-[30px] max-md:text-[35px] max-lg:text-[40px] max-xl:text-[45px] mb-2 px-4 rounded-md table'>
+            <h1 className='bg-accent font-bold text-[46px] max-2xsmall:text-[23px] max-xsmall:text-[26px] max-sm:text-[30px] max-md:text-[35px] max-lg:text-[40px] max-xl:text-[45px] mb-2 px-4 rounded-md table'>
               World Through
             </h1>
             <div className='flex gap-2'>
-              <h1 className='bg-accent font-bold text-[44px] max-2xsmall:text-[20px] max-xsmall:text-[23] max-sm:text-[26px]  max-md:text-[30px] max-lg:text-[38px] max-xl:text-[43px] mb-2 px-4 rounded-md table'>
+              <h1 className='bg-accent font-bold text-[44px] max-2xsmall:text-[20px] max-xsmall:text-[23px] max-sm:text-[26px]  max-md:text-[30px] max-lg:text-[38px] max-xl:text-[43px] mb-2 px-4 rounded-md table'>
                 Unleashed Insight
               </h1>
               <Image
@@ -54,7 +54,7 @@ const Featured = () => {
         <div className='flex flex-[2]  flex-row max-lg:gap-2 gap-6'>
           <div className='flex  box-border gap-2 text-text flex-col max-md:hidden flex-[2]'>
             <div className='flex flex-col py-2 gap-2 max-md:hidden'>
-              <h1 className='font-bold max-lg:text-[17px] text-[22px] '>
+              <h1 className='font-bold text-[22px] max-lg:text-[18px] '>
                 Lorem Ipsum :
                 <span className='font-semibold italic'>
                   is simply dummy text of the printing
@@ -82,9 +82,8 @@ const Featured = () => {
               </div>
             </div>
           </div>
-          <hr className="hidden max-lg:flex rotate-90"/>
-          <div className='flex max-2xsmalljustify-center max-2xsmall:items-start max-2xsmall:tracking-wide max-lg:hidden max-md:flex max-xsmall:h-auto max-xsmall:w-[30%] border-r-2 border-l-2 max-md:border-0 box-border px-6 max-sm:px-0 max-md:px-2 py-2 text-text gap-3 flex-col flex-[3]'>
-          <div class='hidden max-xsmall:w-full max-md:flex items-center'>
+          <div className='flex max-xsmall:justify-center max-xsmall:items-start max-lg:hidden max-md:flex max-xsmall:h-auto max-xsmall:w-auto border-r-2 border-l-2 max-md:border-0 box-border px-6 max-sm:px-0 max-md:px-2 py-2 text-text gap-3 flex-col flex-[3]'>
+          <div class='hidden max-md:flex max-xsmall:w-[300px] max-2xsmall:w-[250px] items-center'>
               <div class='flex-1 border-t-2 border-gray-200'></div>
               <span class='px-3 text-[11px] text-text'>24-02-2024</span>
               <div class='flex-1 border-t-2 border-gray-200'></div>
@@ -94,22 +93,22 @@ const Featured = () => {
                 Lorem ipsum is placeholder text <br/> commonly used in the graphic.
               </h1>
             </div>
-            <div className="max-sm:h-auto flex  max-sm:w-full max-xsmall:w-3/4 ">
+            <div className="max-sm:h-auto flex  max-sm:w-full max-xsmall:w-3/4  max-2xsmall:w-[250px]">
               <Image
                 className='rounded-2xl h-[200px] grayscale object-cover object-center'
                 src={hero1}
                 alt=''
               />
             </div>
-            <div className="max-xsmall:h-auto  max-xsmall:w-full">
-              <p className='text-[16px] max-md:text-[14px] max-sm:text-[12px] max-xsmall:text-[11px]  '>
+            <div className="max-xsmall:h-auto max-xsmall:w-[300px] max-2xsmall:w-[250px] ">
+              <p className='text-[16px] max-md:text-[14px] max-sm:text-[12px] max-xsmall:text-[11px] text-justify '>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et  dolore magna aliqua. Ut
                 enim ad minim veniam, quisnostrud exercitation ullamco laboris
                 nisi ut aliquip ex ea commodo consequat.
               </p>
             </div>
-            <div class='hidden max-md:flex items-center'>
+            <div class='hidden max-md:flex max-xsmall:w-[300px] max-2xsmall:w-[250px]  items-center'>
               <div class='flex-1 border-t-2 border-gray-200'></div>
               <span class='px-3 text-[11px] text-text'>24-02-2024</span>
               <div class='flex-1 border-t-2 border-gray-200'></div>

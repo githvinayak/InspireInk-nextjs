@@ -36,17 +36,17 @@ const Sidebar = () => {
   ]
   return (
     <> 
-        <nav className=' h-screen flex flex-col bg-white border-r shadow-sm'>
+        <nav className=' h-screen flex flex-col bg-secondary  shadow-sm'>
           <div className=' p-4 pb-2 max-sm:p-2 flex justify-between items-center'>
             <Link href="/"><Image src={logo} priority={true} className={` overflow-hidden transition-all ${open ? "w-0" : "w-32"}`} alt='pic' /></Link>
-            <button onClick={()=>setOpen((prev)=>!prev)} className='p-1.5 rounded-lg bg-gray-50 hover:bg-gray-100'>
+            <button onClick={()=>setOpen((prev)=>!prev)} className='p-1.5 rounded-lg text-white bg-accent hover:bg-accent'>
               { open ? <Icons.ChevronLast /> :  <Icons.ChevronFirst />}
             </button>
           </div>  
-          <ul className=' flex-1 px-3 max-sm:p-[6px] py-5'>
+          <ul className=' flex-1 px-3 max-sm:p-[6px]'>
             { links.map((link)=>(
               <Tooltip title={link.title} key={link.path} disableHoverListener={!open} placement="right">
-             <Link href={link.path}  className= {`relative flex items-center py-4 px-3 max-sm:pl-[10px] font-medium rounded-md cursor-pointer transition-colors hover:bg-indigo-50 text-gray-600 ${ pathName === link.path && styles.active }`} >{link.icon} <span className={` overflow-hidden transition-all ${open ? "w-0" : "w-52 text-[1.1rem] ml-3"}`}>{link.title}</span></Link>
+             <Link href={link.path}  className= {`relative flex justify-center items-center py-4 mb-2 px-3 max-sm:pl-[10px] font-medium rounded-md cursor-pointer transition-colors hover:bg-accent text-white ${ pathName === link.path && styles.active }`} >{link.icon} <span className={` overflow-hidden transition-all ${open ? "w-0" : "w-52 text-[1.1rem] ml-3"}`}>{link.title}</span></Link>
              </Tooltip>
             ))
             }

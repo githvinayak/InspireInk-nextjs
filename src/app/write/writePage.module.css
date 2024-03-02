@@ -10,6 +10,18 @@
     padding: 10px 20px;
     margin-left: 50px;
     width: max-content;
+    background-color: #8ebbff;
+    border-radius: 20px;
+    font-weight: 500;
+    outline: none;
+  }
+  .option{
+    background-color: #24293E;
+    color: white;
+   margin-bottom: 2px;
+  }
+  .option:hover{
+    background-color: #2e3751;
   }
   
   .editor {
@@ -32,14 +44,14 @@
   }
   
   .addButton {
-    border-color: #1a8917;
+    border-color: #8ebbff;
   }
   
   .add {
     display: flex;
     gap: 20px;
     position: absolute;
-    background-color: white;
+    background-color: #2e3751;
     z-index: 999;
     width: 100%;
     left: 50px;
@@ -68,7 +80,7 @@
     right: 0px;
     padding: 10px 20px;
     border: none;
-    background-color: #1a8917;
+    background-color: #8ebbff;
     color: white;
     cursor: pointer;
     border-radius: 20px;

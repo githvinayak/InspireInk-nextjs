@@ -23,8 +23,8 @@ const CardList = async({page,cat}) => {
   return (
     <>
         <div className="flex-[5] overflow-y-auto mt-14">
-        <h1 className='mb-[40px] text-[45px] font-bold max-xl:text-[40px] max-lg:text-[35px]  '>Recent Posts</h1>
-        <div className="mt-16 px-8 grid xl:grid-cols-2  md:grid-cols-1 gap-8">
+        <h1 className='mb-[40px] px-3 text-[45px] max-2xsmall:text-[23px] text-white max-xsmall:text-[25px] max-sm:text-[27px]  max-md:text-[30px] font-bold '>Recent Posts</h1>
+        <div className="mt-16  grid grid-cols-2  max-md:grid-cols-1 gap-8">
        {
         posts?.map((item)=>(
         <Card item={item} key={item._id}/>

@@ -1,7 +1,10 @@
 "use client";
 import styles from "./writePage.module.css";
-import Image from "next/image";
-
+import Image from "next/image"; 
+import plus from "../../images/plus.png";
+import image from "../../images/image.png";
+import external from "../../images/external.png";
+import video from "../../images/video.png";
 import { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.bubble.css";
@@ -103,12 +106,12 @@ const page = () => {
             className={styles.input}
           />
       <select className={styles.select} onChange={(e) => setCatSlug(e.target.value)}>
-        <option value="style">style</option>
-        <option value="fashion">fashion</option>
-        <option value="food">food</option>
-        <option value="culture">culture</option>
-        <option value="travel">travel</option>
-        <option value="coding">coding</option>
+        <option className={styles.option} value="style">style</option>
+        <option className={styles.option} value="fashion">fashion</option>
+        <option className={styles.option} value="food">food</option>
+        <option  className={styles.option}value="culture">culture</option>
+        <option className={styles.option} value="travel">travel</option>
+        <option className={styles.option} value="coding">coding</option>
       </select>
           <div className={styles.editor}>
             <button className={styles.button} onClick={() => setOpen(!open)}>
