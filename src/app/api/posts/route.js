@@ -3,34 +3,34 @@ import prisma from "../../../../prisma/connect";
 import { NextResponse } from "next/server";
 
 export const GET = async (req) => {
-
-  const { searchParams } = new URL(req.url);
+  const { searchParams } = new URL(req.url); //prisma.post.count({where:Query.where}),
 
   const page = searchParams.get("page");
   const cat = searchParams.get("cat");
+  console.log(page, cat);
 
   const POST_PER_PAGE = 6;
 
   const query = {
     take: POST_PER_PAGE,
-    skip: (page - 1) * POST_PER_PAGE,
-    where: { ...(cat && { catSlug : cat}) },
+    skip: POST_PER_PAGE * (page - 1),
+    where: {
+      ...(cat && { catSlug: cat }),
+    },
   };
-  
   try {
     const [posts, count] = await prisma.$transaction([
       prisma.post.findMany(query),
-      prisma.post.count({where:query.where}),
+      prisma.post.count({ where: query.where }),
     ]);
-    return new NextResponse(JSON.stringify({posts, count}, { status: 200 }));
-  } catch (error) {
-    console.log(error);
+    return new NextResponse(JSON.stringify({ posts, count }, { status: 200 }));
+  } catch (err) {
+    console.log(err);
     return new NextResponse(
-      JSON.stringify({ message: "something went error" }, { status: 500 })
+      JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
     );
   }
 };
-
 
 // CREATE A POST
 export const POST = async (req) => {

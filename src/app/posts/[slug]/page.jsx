@@ -19,7 +19,6 @@ const SinglePage = async ({ params }) => {
   const { slug } = params;
 
   const data = await getData(slug);
-  const image = data.img;
 
   return (
     <div className={styles.container}>

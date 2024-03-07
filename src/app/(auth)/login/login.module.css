@@ -17,8 +17,6 @@
     max-width: 500px;
   }
   .banner{
-    border-top-right-radius: 40px;
-    border-bottom-right-radius: 40px;
     height: 100vh;
     object-fit: cover;
     object-position: center;
@@ -120,7 +118,7 @@
     display: flex;
     margin: 11px 20px;
     height: 1.5px;
-    width: 120px; /* Adjust the width as needed */
+    width: 100px; /* Adjust the width as needed */
     background-color:rgba(211, 211, 211, 0.747); /* Line color */
   }
   .socialIcons{
@@ -161,8 +159,11 @@
       width: 300px;
     }
   }
-  @media screen and (max-width: 640px){
+  @media screen and (max-width: 480px){
     .inputContainer .input{
       width: auto;
+    }
+    .wrapper{
+      padding: 0;
     }
   }
