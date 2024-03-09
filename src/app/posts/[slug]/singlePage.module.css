@@ -66,11 +66,19 @@
   .post {
     flex: 5;
     margin-top: 60px;
+    color:white;
+    text-align: justify;
   }
   
   .description p {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 300;
+    margin-bottom: 16px;
+    color: white;
+  }
+  .description  h1{
+    font-size: 24px;
+    font-weight: 500;
     margin-bottom: 20px;
     color: white;
   }

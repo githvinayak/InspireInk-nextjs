@@ -10,8 +10,11 @@ import Tooltip from "@mui/material/Tooltip";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Search from "./Search";
+import { useSession } from "next-auth/react";
 const Sidebar = () => {
   const pathName = usePathname();
+  const session = useSession()
+  const userInfo = session?.data?.user;
   const [open, setOpen] = useState(true);
   const links = [
     {
@@ -87,21 +90,21 @@ const Sidebar = () => {
           <AuthLinks open={open} />
         </ul>
         <div className=' border-t flex p-4'>
-          <Image
-            src='https://ui-avatars.com/api/?background=0D8ABC&color=fff'
+         { userInfo?.image &&( <Image
+            src={userInfo?.image || 'https://ui-avatars.com/api/?background=0D8ABC&color=fff'} 
             width={50}
             height={50}
             className='w-10 h-10 rounded-md'
             alt='pic'
-          />
+          />)}
           <div
             className={`flex justify-between items-center overflow-hidden transition-all ${
               open ? "w-0 " : "w-52 ml-3"
             }`}
           >
-            <div className='leading-5'>
-              <h4 className='font-semibold text-[1.15rem]'>John Doe</h4>
-              <span className='text-xs text-gray-400 '>Johndoe@gmail.com</span>
+           <div className='leading-5'>
+              {userInfo?.name &&(<h4 className='font-semibold text-white text-[1.15rem]'>{userInfo?.name || Username}</h4>)}
+             {userInfo?.email &&( <span className='text-xs text-gray-400 '>{userInfo?.email || Useremail}</span>)}
             </div>
           </div>
         </div>
