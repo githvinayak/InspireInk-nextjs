@@ -5,6 +5,7 @@ import styles from "./comments.module.css";
 import Image from "next/image";
 import useSWR from "swr";
 import { useSession } from "next-auth/react";
+import Like from "../Like"
 import { useState } from "react";
 
 const fetcher = async (url) => {
@@ -19,11 +20,11 @@ const fetcher = async (url) => {
   return data;
 };
 
-const Comments = ({ postSlug }) => {
+const Comments = ({ post}) => {
   const { status } = useSession();
 
   const { data, mutate, isLoading } = useSWR(
-    `http://localhost:3000/api/feedbacks?postSlug=${postSlug}`,
+    `http://localhost:3000/api/feedbacks?postSlug=${post.slug}`,
     fetcher
   );
   const [desc, setDesc] = useState("");
@@ -43,7 +44,12 @@ const Comments = ({ postSlug }) => {
   };
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Comments</h1>
+      <div className="flex justify-between">
+      <h1 className={styles.title}>What do you think ?</h1>
+      {status === "authenticated" && (
+        <Like post={post} />
+      )}
+      </div>
       {status === "authenticated" ? (
         <div className={styles.write}>
             <input
@@ -70,8 +76,8 @@ const Comments = ({ postSlug }) => {
       <div className={styles.comments}>
         {isLoading
           ? "loading"
-          : data?.map((item) => (
-              <div className={styles.comment} key={item.name}>
+          : data?.map((item,idx) => (
+              <div className={styles.comment} key={idx}>
                 <div className={styles.user}>
                   {item?.user?.image && (
                     <Image

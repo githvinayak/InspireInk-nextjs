@@ -10,6 +10,21 @@
   .textContainer {
     flex: 1;
   }
+  .views{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: #2e3751;
+    border-radius: 1rem;
+    padding: 4px 8px;
+    color: #8ebbff;
+  }
+  .align{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
   
   .title {
     font-size: 64px;
@@ -94,8 +109,20 @@
     }
   }
   @media screen and (max-width: 1024px) {
-    .imageContainer {
-      display: none;
+    .title {
+      font-size: 45px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .infoContainer{
+      display: flex;
+      flex-direction: column;
+    }
+    .description p{
+      font-size: 18px;
+    }
+    .title {
+      font-size: 40px;
     }
   }
   @media screen and (max-width: 640px) {
@@ -104,6 +131,15 @@
     }
   
     .description p{
-      font-size: 18px;
+      font-size: 15px;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  
+    .description p{
+      font-size: 13px;
     }
   }

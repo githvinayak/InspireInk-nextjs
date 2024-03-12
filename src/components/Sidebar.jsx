@@ -90,8 +90,14 @@ const Sidebar = () => {
           <AuthLinks open={open} />
         </ul>
         <div className=' border-t flex p-4'>
-         { userInfo?.image &&( <Image
-            src={userInfo?.image || 'https://ui-avatars.com/api/?background=0D8ABC&color=fff'} 
+         { userInfo?.image ? ( <Image
+            src={userInfo?.image} 
+            width={50}
+            height={50}
+            className='w-10 h-10 rounded-md'
+            alt='pic'
+          />) : ( <Image
+            src='https://ui-avatars.com/api/?background=0D8ABC&color=fff'
             width={50}
             height={50}
             className='w-10 h-10 rounded-md'
@@ -103,8 +109,8 @@ const Sidebar = () => {
             }`}
           >
            <div className='leading-5'>
-              {userInfo?.name &&(<h4 className='font-semibold text-white text-[1.15rem]'>{userInfo?.name || Username}</h4>)}
-             {userInfo?.email &&( <span className='text-xs text-gray-400 '>{userInfo?.email || Useremail}</span>)}
+              {userInfo?.name ? (<h4 className='font-semibold text-white text-[1.15rem]'>{userInfo?.name}</h4>): (<h4 className='font-semibold text-white text-[1.15rem]'>Username</h4>)}
+             {userInfo?.email ? ( <span className='text-xs text-gray-400 '>{userInfo?.email}</span>): ( <span className='text-xs text-gray-400 '>Useremail</span>)}
             </div>
           </div>
         </div>

@@ -26,7 +26,7 @@ export const GET = async (req) => {
 // CREATE A COMMENT
 export const POST = async (req) => {
   const session = await getAuthSession();
-
+  console.log(session);
   if (!session) {
     return new NextResponse(
       JSON.stringify({ message: "Not Authenticated!" }, { status: 401 })
