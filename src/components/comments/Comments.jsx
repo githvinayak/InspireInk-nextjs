@@ -27,6 +27,7 @@ const Comments = ({ post}) => {
     `http://localhost:3000/api/feedbacks?postSlug=${post.slug}`,
     fetcher
   );
+  
   const [desc, setDesc] = useState("");
   const handleEvent = (e) => {
     setDesc(e.target.value);

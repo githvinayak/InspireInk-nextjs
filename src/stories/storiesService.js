@@ -1,17 +1,17 @@
 import prisma from '../../prisma/connect';
 
-export const createStory = async (content, userId) => {
+export const createStory = async (content, userEmail) => {
   return prisma.story.create({
     data: {
       content,
-      userId,
+      userEmail,
     },
   });
 };
 
-export const getStoriesByUserId = async (userId) => {
+export const getStoriesByUserId = async (userEmail) => {
   return prisma.story.findMany({
-    where: { userId },
+    where: { userEmail },
     orderBy: { createdAt: 'desc' },
   });
 };

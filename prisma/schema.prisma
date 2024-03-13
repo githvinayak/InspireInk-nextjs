@@ -45,7 +45,7 @@ model User {
   sessions      Session[]
   Post          Post[] 
   Feedback      Feedback[]
-  Story         Story[]
+  Note          Note[]
 }
 
 model VerificationToken {
@@ -89,11 +89,10 @@ model Feedback {
   postSlug  String
   post      Post     @relation(fields: [postSlug], references: [slug])
 }
-
-model Story {
+model Note {
   id        String      @id @default(cuid()) @map("_id")
   content   String
-  userId    String
-  user      User     @relation(fields: [userId], references: [id])
+  userEmail  String
+  user      User     @relation(fields: [userEmail], references: [email])
   createdAt DateTime @default(now())
 }
