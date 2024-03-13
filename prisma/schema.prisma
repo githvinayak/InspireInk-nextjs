@@ -83,7 +83,7 @@ model Post {
 model Feedback {
   id        String   @id @default(cuid()) @map("_id")
   createdAt DateTime @default(now())
-  desc      String
+  desc      String   
   userEmail String
   user      User     @relation(fields: [userEmail], references: [email])
   postSlug  String
@@ -91,7 +91,7 @@ model Feedback {
 }
 model Note {
   id        String      @id @default(cuid()) @map("_id")
-  content   String
+  content   String   
   userEmail  String
   user      User     @relation(fields: [userEmail], references: [email])
   createdAt DateTime @default(now())

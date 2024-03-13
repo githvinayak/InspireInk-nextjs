@@ -7,8 +7,7 @@ import { signOut, useSession } from "next-auth/react";
 import { IoMdLogOut } from "react-icons/io";
 import { useState } from "react";
 import Image from "next/image";
-import CreateStoryComponent from "./stories/CreateStoryComponent";
-import StoriesComponent from "./stories/StoriesComponent";
+import Notes from "./notes/Notes"
 
 export const AuthLinks = ({ open }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -84,8 +83,7 @@ export const AuthLinks = ({ open }) => {
             </div>
           )}
           { isOpen && (<div className="absolute top-0 z-[999] right-0 h-screen w-[400px] bg-secondary flex flex-col justify-center items-center">
-          <StoriesComponent userEmail={data?.user?.email}/>
-          <CreateStoryComponent userEmail={data?.user?.email}/>
+         <Notes/>
           </div>)
           }   
           <span

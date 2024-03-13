@@ -8,7 +8,8 @@ export const GET = async () => {
       {
         orderBy: {
           createdAt: 'desc',
-        }
+        },
+        include: { user: true },
       }
     );
 
@@ -21,13 +22,29 @@ export const GET = async () => {
   }
 };
 
-export const POST = async () => {
+export const POST = async (req) => {
+  const session = await getAuthSession();
+  console.log(session);
+  if (!session) {
+    return new NextResponse(
+      JSON.stringify({ message: "Not Authenticated!" }, { status: 401 })
+    );
+  }
   try {
-    
-  } catch (error) {
+    const body = await req.json();
+    if(!body){
+      return new NextResponse(
+        JSON.stringify({ message: "Please fill this field first" }, { status: 400 })
+      );
+    }
+    const note = await prisma.note.create({
+      data: { ...body, userEmail: session.user.email },
+    });
+    return new NextResponse(JSON.stringify(note, { status: 200 }));
+  } catch (err) {
     console.log(err);
     return new NextResponse(
       JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
     );
   }
-}
+};

@@ -1,55 +1,54 @@
 "use client";
 
 import Link from "next/link";
-import styles from "./comments.module.css";
+import styles from "../component.module.css";
 import Image from "next/image";
-import useSWR from "swr";
 import { useSession } from "next-auth/react";
 import Like from "../Like"
+import useSWR from "swr";
 import { useState } from "react";
 
 const fetcher = async (url) => {
-  const res = await fetch(url);
+    const res = await fetch(url);
+  
+    const data = await res.json();
+  
+    if (!res.ok) {
+      const error = new Error(data.message);
+      throw error;
+    }
+    return data;
+  };
 
-  const data = await res.json();
-
-  if (!res.ok) {
-    const error = new Error(data.message);
-    throw error;
-  }
-  return data;
-};
-
-const Comments = ({ postSlug,post}) => {
+const Comments = () => {
   const { status } = useSession();
 
   const { data, mutate, isLoading } = useSWR(
-    `http://localhost:3000/api/feedbacks?postSlug=${postSlug}`,
+    `http://localhost:3000/api/notes`,
     fetcher
   );
-  
-  const [desc, setDesc] = useState("");
+
+  console.log(data);
+ 
+  const [content, setContent] = useState("");
   const handleEvent = (e) => {
-    setDesc(e.target.value);
+    setContent(e.target.value);
   };
   const handleClick = () => {
-    setDesc("");
+    setContent("");
   };
   const handleSubmit = async () => {
-    await fetch("/api/feedbacks", {
+    await fetch("/api/notes", {
       method: "POST",
-      body: JSON.stringify({ desc, postSlug }),
+      body: JSON.stringify({ content }),
     });
-    setDesc("");
+    setContent("");
     mutate();
   };
   return (
     <div className={styles.container}>
       <div className="flex justify-between">
       <h1 className={styles.title}>What do you think ?</h1>
-      {status === "authenticated" && (
-        <Like post={post} />
-      )}
       </div>
       {status === "authenticated" ? (
         <div className={styles.write}>
@@ -57,7 +56,7 @@ const Comments = ({ postSlug,post}) => {
               placeholder='write a comment...'
               className={styles.input}
               onChange={handleEvent}
-              value={desc}
+              value={content}
             />
           <div className={styles.btns}>
             <button onClick={handleClick} className={styles.btn1}>
@@ -65,7 +64,7 @@ const Comments = ({ postSlug,post}) => {
             </button>
             <button
               onClick={handleSubmit}
-              className={`${desc === "" ? styles.btn2 : styles.blue}`}
+              className={`${content === "" ? styles.btn2 : styles.blue}`}
             >
               Comment
             </button>
@@ -96,7 +95,7 @@ const Comments = ({ postSlug,post}) => {
                         {item.createdAt.toString().slice(0, 10)}
                       </span>
                     </div>
-                    <p className={styles.desc}>{item.desc}</p>
+                    <p className={styles.desc}>{item.content}</p>
                   </div>
                 </div>
               </div>
