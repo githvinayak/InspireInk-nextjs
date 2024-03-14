@@ -94,5 +94,6 @@ model Note {
   content   String   
   userEmail  String
   user      User     @relation(fields: [userEmail], references: [email])
-  createdAt DateTime @default(now())
+  createdAt DateTime @default(now()) 
+  expires_at DateTime  @default(now() + 24 * 60 * 60 * 1000)
 }

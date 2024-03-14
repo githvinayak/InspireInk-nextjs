@@ -7,7 +7,7 @@ import { signOut, useSession } from "next-auth/react";
 import { IoMdLogOut } from "react-icons/io";
 import { useState } from "react";
 import Image from "next/image";
-import Notes from "./notes/Notes"
+import Notes from "./notes/Notes";
 
 export const AuthLinks = ({ open }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,13 +65,16 @@ export const AuthLinks = ({ open }) => {
                   width={200}
                   height={200}
                   className={` ${
-                    open ? "ml-0 w-7 h-7" : " w-11 ml-6 h-11"
+                    open ? "ml-0 w-7 h-7" : " w-11 h-11"
                   } h-11 rounded-full`}
                   alt='pic'
                 />
-                <span className='absolute top-0 bg-secondary rounded-md left-0 px-[0.3rem] py-[0.1rem] text-[12px]'>
-                  New!
+                 <div className='absolute top-0  right-0'>
+                <span class={`relative flex ${open ? "h-3 w-3" : "h-4 w-4"}`}>
+                  <span class='animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75'></span>
+                  <span class={`relative inline-flex rounded-full ${open ? "h-3 w-3" : "h-4 w-4"} bg-accent`}></span>
                 </span>
+              </div>
               </div>
               <span
                 className={` overflow-hidden transition-all ${
@@ -82,10 +85,11 @@ export const AuthLinks = ({ open }) => {
               </span>
             </div>
           )}
-          { isOpen && (<div className="absolute top-0 z-[999] right-0 h-screen w-[400px] bg-secondary flex flex-col justify-center items-center">
-         <Notes/>
-          </div>)
-          }   
+          {isOpen && (
+            <div className='absolute top-0 z-[999] right-0 h-screen w-[400px] bg-secondary flex flex-col justify-center items-center'>
+              <Notes />
+            </div>
+          )}
           <span
             className={`relative bg-primary flex items-center py-4 px-3 my-2 font-medium rounded-md cursor-pointer transition-all hover:opacity-[.9] text-white`}
             onClick={() => signOut()}
@@ -99,7 +103,7 @@ export const AuthLinks = ({ open }) => {
               Logout
             </span>
           </span>
-        </div>     
+        </div>
       )}
     </>
   );

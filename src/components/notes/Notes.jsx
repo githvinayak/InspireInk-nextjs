@@ -77,7 +77,7 @@ const Comments = () => {
         {isLoading
           ? "loading"
           : data?.map((item,idx) => (
-              <div className={styles.comment} key={idx}>
+              <div className='absolute top-0 z-[999] right-0 h-screen w-[400px] bg-secondary flex flex-col justify-center items-center' key={idx}>
                 <div className={styles.user}>
                   {item?.user?.image && (
                     <Image
