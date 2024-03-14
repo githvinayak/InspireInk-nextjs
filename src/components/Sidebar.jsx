@@ -5,7 +5,7 @@ import logo from "@/images/blog-logo.svg";
 import * as Icons from "lucide-react";
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
-import { AuthLinks } from "./AuthLinks";
+import { AuthLinks } from "./authlinks/AuthLinks";
 import Tooltip from "@mui/material/Tooltip";
 import { usePathname } from "next/navigation";
 import { useState } from "react";

@@ -95,7 +95,7 @@ const Featured = () => {
             </div>
             <div className="max-sm:h-auto flex  max-sm:w-full max-xsmall:w-3/4  max-2xsmall:w-[250px]">
               <Image
-                className='rounded-2xl h-[200px] grayscale object-cover object-center'
+                className='rounded-2xl h-[200px]  object-cover object-center'
                 src={hero1}
                 alt=''
               />
@@ -135,7 +135,7 @@ const Featured = () => {
             </div>
             <div className='relative'>
               <Image
-                className='rounded-2xl sepia h-[200px] object-cover object-center'
+                className='rounded-2xl h-[200px] object-cover object-center'
                 src={hero3}
                 alt=''
               />

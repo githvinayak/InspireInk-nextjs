@@ -1,4 +1,4 @@
-import Menu from "@/components/Menu";
+import Menu from "@/components/menu/Menu";
 import CardList from "@/components/CardList";
 
 const BlogPage =async ({searchParams}) => {

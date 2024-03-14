@@ -1,5 +1,6 @@
 import Link from "next/link";
-import styles from "./component.module.css";
+import styles from "../component.module.css";
+import css from "./auth.module.css"
 import { usePathname } from "next/navigation";
 import * as Icons from "lucide-react";
 import Tooltip from "@mui/material/Tooltip";
@@ -7,7 +8,9 @@ import { signOut, useSession } from "next-auth/react";
 import { IoMdLogOut } from "react-icons/io";
 import { useState } from "react";
 import Image from "next/image";
-import Notes from "./notes/Notes";
+import { RxCross1 } from "react-icons/rx";
+import Notes from "../notes/Notes";
+import Input from "../notes/Input";
 
 export const AuthLinks = ({ open }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -69,12 +72,16 @@ export const AuthLinks = ({ open }) => {
                   } h-11 rounded-full`}
                   alt='pic'
                 />
-                 <div className='absolute top-0  right-0'>
-                <span class={`relative flex ${open ? "h-3 w-3" : "h-4 w-4"}`}>
-                  <span class='animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75'></span>
-                  <span class={`relative inline-flex rounded-full ${open ? "h-3 w-3" : "h-4 w-4"} bg-accent`}></span>
-                </span>
-              </div>
+                <div className='absolute top-0  right-0'>
+                  <span class={`relative flex ${open ? "h-3 w-3" : "h-4 w-4"}`}>
+                    <span class='animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75'></span>
+                    <span
+                      class={`relative inline-flex rounded-full ${
+                        open ? "h-3 w-3" : "h-4 w-4"
+                      } bg-accent`}
+                    ></span>
+                  </span>
+                </div>
               </div>
               <span
                 className={` overflow-hidden transition-all ${
@@ -86,8 +93,22 @@ export const AuthLinks = ({ open }) => {
             </div>
           )}
           {isOpen && (
-            <div className='absolute top-0 z-[999] right-0 h-screen w-[400px] bg-secondary flex flex-col justify-center items-center'>
-              <Notes />
+            <div className='absolute top-0 z-[999] py-2 px-6 right-0 h-screen w-[350px] bg-secondary gap-8 flex flex-col justify-between '>
+              <div className="flex justify-between bg-primary px-2 h-[50px] rounded-md font-bold text-white overflow-hidden items-center w-full">
+              <div class={css.container}>
+                <h1 id={css.h1}>New Updates</h1>
+                <h1>New Updates</h1>
+              </div>
+              <div onClick={(prev)=>setIsOpen(!prev)} className="p-2 bg-secondary rounded-full">
+                <RxCross1 className="w-4 h-4"/>
+              </div>
+              </div>
+              <div className="flex overflow-hidden flex-[5] flex-col">
+                <Notes/>
+              </div>
+              <div className="">
+                <Input/>
+              </div>
             </div>
           )}
           <span

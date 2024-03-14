@@ -91,9 +91,9 @@ model Feedback {
 }
 model Note {
   id        String      @id @default(cuid()) @map("_id")
-  content   String   
+  content   String 
+  path      String 
   userEmail  String
   user      User     @relation(fields: [userEmail], references: [email])
   createdAt DateTime @default(now()) 
-  expires_at DateTime  @default(now() + 24 * 60 * 60 * 1000)
 }

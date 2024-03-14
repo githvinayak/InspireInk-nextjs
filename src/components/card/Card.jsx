@@ -26,7 +26,6 @@ const Card = ({ key, item }) => {
               </Link>
               <div className='flex gap-2 font-bold'>
                 <span className=' max-xl:text-[12px] max-lg:text-[14px] max-md:text-[16px] max-xs:text-[14px] max-xsmall:text-[12px] max-2xsmall:text-[11px]'>
-                  {" "}
                   {item.createdAt.substring(0, 10)} -
                 </span>
                 <span className=' max-xl:text-[12px] max-lg:text-[14px] max-md:text-[16px] max-xs:text-[14px] max-xsmall:text-[12px] max-2xsmall:text-[11px]'>
@@ -36,7 +35,7 @@ const Card = ({ key, item }) => {
             </div>
           </div>
           <div className={styles.align}>
-            <FaEye className=' text-[24px]' />{" "}
+            <FaEye className=' text-[24px]' />
             <div className='flex border-l-[3px] border-gray-200 px-1  py-1 text-[10px] flex-col'>
               <span className='text-accent font-bold text-[12px]'>{item?.views}</span>{" "}
               views
