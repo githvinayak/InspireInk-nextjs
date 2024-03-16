@@ -75,7 +75,7 @@ model Post {
   catSlug   String
   cat       Category  @relation(fields: [catSlug], references: [slug])
   userEmail String
-  user      User      @relation(fields: [userEmail], references: [email])
+  user      User      @relation(fields: [userEmail], references: [email] , onDelete:Cascade)
   feedbacks  Feedback[]
    }
 
