@@ -1,4 +1,4 @@
-
+"use server"
 import prisma from "../../../../../prisma/connect"
 import { NextResponse } from "next/server";
 import { getAuthSession } from "@/lib/auth";
@@ -63,10 +63,16 @@ export const POST = async (req) => {
 
   try {
     const body = await req.json();
-    const slug = body.slug;
+   const {slug,title,desc,img,catSlug} = body;
+   const updatedData={
+    title:title === ""  ? undefined :title,
+    desc:desc === ""  ? undefined :desc,
+    img:img === ""  ? undefined :img,
+    catSlug:catSlug === ""  ? undefined :catSlug,
+   }
     const post = await prisma.post.update({
       where : { slug},
-      data: { ...body, userEmail: session.user.email },
+      data: { ...updatedData, userEmail: session.user.email },
     });
 
     return new NextResponse(JSON.stringify(post, { status: 200 }));

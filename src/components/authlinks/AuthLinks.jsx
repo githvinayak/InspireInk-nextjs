@@ -73,10 +73,10 @@ export const AuthLinks = ({ open }) => {
                   alt='pic'
                 />
                 <div className='absolute top-0  right-0'>
-                  <span class={`relative flex ${open ? "h-3 w-3" : "h-4 w-4"}`}>
-                    <span class='animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75'></span>
+                  <span className={`relative flex ${open ? "h-3 w-3" : "h-4 w-4"}`}>
+                    <span className='animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75'></span>
                     <span
-                      class={`relative inline-flex rounded-full ${
+                      className={`relative inline-flex rounded-full ${
                         open ? "h-3 w-3" : "h-4 w-4"
                       } bg-accent`}
                     ></span>
@@ -95,7 +95,7 @@ export const AuthLinks = ({ open }) => {
           {isOpen && (
             <div className='absolute top-0 z-[999] py-2 px-6 right-0 h-screen w-[350px] bg-secondary gap-8 flex flex-col justify-between '>
               <div className="flex justify-between bg-primary px-2 h-[50px] rounded-md font-bold text-white overflow-hidden items-center w-full">
-              <div class={css.container}>
+              <div className={css.container}>
                 <h1 id={css.h1}>New Updates</h1>
                 <h1>New Updates</h1>
               </div>

@@ -6,7 +6,7 @@ import React from 'react'
 const MenuCard = ({posts}) => {
   return (
     <>
-        <Link key={posts._id} className="flex hover:px-4 hover:py-3 items-center hover:bg-secondary transition-all hover:rounded-xl gap-[18px] " href={`/posts/${posts.slug}`}>
+        <Link key={posts.path} className="flex hover:px-4 hover:py-3 items-center hover:bg-secondary transition-all hover:rounded-xl gap-[18px] " href={`/posts/${posts.slug}`}>
             <div className="flex-[1] ">
               <Image src={posts.img} alt='' width={80} height={80} className='aspect-[1/1] p-1 rounded-[50%] bg-secondary border-[3px] border-solid border-accent ' />
             </div>

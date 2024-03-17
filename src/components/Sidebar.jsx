@@ -4,12 +4,10 @@ import styles from "./component.module.css";
 import logo from "@/images/blog-logo.svg";
 import * as Icons from "lucide-react";
 import Link from "next/link";
-import ThemeToggle from "./ThemeToggle";
 import { AuthLinks } from "./authlinks/AuthLinks";
 import Tooltip from "@mui/material/Tooltip";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import Search from "./Search";
 import { useSession } from "next-auth/react";
 const Sidebar = () => {
   const pathName = usePathname();
@@ -60,10 +58,10 @@ const Sidebar = () => {
           </button>
         </div>
         <ul className=' flex-1 px-3 max-sm:p-[6px]'>
-          {links.map((link) => (
+          {links.map((link,index) => (
             <Tooltip
               title={link.title}
-              key={link.path}
+              key={index}
               disableHoverListener={!open}
               placement='right'
             >

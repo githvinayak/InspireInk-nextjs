@@ -31,7 +31,7 @@ const CategoryList =async ({ withImage }) => {
             <Link
               className={`flex items-center  ${ withImage ? "gap-[10px]" : ""} capitalize ${ withImage ? "w-[200px] max-xsmall:w-[170px] h-[80px]  rounded-[10px]": "w-[27%] h-[50px]  rounded-[14px]" }  justify-center  `}
               href={`/posts?cat=${category.slug}`}
-              key={category._id}
+              key={category.title}
             >
               { withImage && (
                <div>

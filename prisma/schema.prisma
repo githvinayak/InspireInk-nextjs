@@ -43,6 +43,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  role          Role   @default(USER)
   Post          Post[] 
   Feedback      Feedback[]
   Note          Note[]
@@ -68,11 +69,11 @@ model Post {
   id        String    @id @default(cuid()) @map("_id")
   createdAt DateTime  @default(now())
   slug      String    @unique
-  title     String
-  desc      String
+  title     String?
+  desc      String?
   img       String?
   views     Int       @default(0)
-  catSlug   String
+  catSlug   String?
   cat       Category  @relation(fields: [catSlug], references: [slug])
   userEmail String
   user      User      @relation(fields: [userEmail], references: [email] , onDelete:Cascade)
@@ -96,4 +97,9 @@ model Note {
   userEmail  String
   user      User     @relation(fields: [userEmail], references: [email])
   createdAt DateTime @default(now()) 
+}
+
+enum Role {
+  USER
+  ADMIN
 }

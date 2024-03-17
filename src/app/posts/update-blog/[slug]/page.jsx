@@ -1,11 +1,11 @@
 "use client";
 
-import styles from "./writePage.module.css";
+import styles from "../../../write/writePage.module.css";
 import Image from "next/image"; 
-import plus from "../../images/plus.png";
-import image from "../../images/image.png";
-import external from "../../images/external.png";
-import video from "../../images/video.png";
+import plus from "@/images/plus.png";
+import image from "@/images/image.png";
+import external from "@/images/external.png";
+import video from "@/images/video.png";
 import { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.bubble.css";
@@ -19,7 +19,7 @@ import {
 } from "firebase/storage";
 import { app } from "@/lib/firebase";
 
-const UpdateBlog = () => {
+const UpdatePage = ({params}) => {
   const { status } = useSession();
   const router = useRouter();
 
@@ -73,29 +73,23 @@ const UpdateBlog = () => {
     router.push("/");
   }
 
-  const slugify = (str) =>
-    str
-      .toLowerCase()
-      .trim()
-      .replace(/[^\w\s-]/g, "")
-      .replace(/[\s_-]+/g, "-")
-      .replace(/^-+|-+$/g, "");
-
+  const {slug} = params;
+  
   const handleSubmit = async () => {
-    const res = await fetch("/api/posts", {
+    const res = await fetch(`/api/posts/${slug}`, {
       method: "POST",
       body: JSON.stringify({
         title,
         desc: value,
         img: media,
-        slug: slugify(title),
+        slug: slug,
         catSlug: catSlug || "style", //If not selected, choose the general category
       }),
     });
 
     if (res.status === 200) {
       const data = await res.json();
-      router.push(`/posts/${data.slug}`);
+      router.push(`/posts/${slug}`);
     }
   };
 
@@ -155,4 +149,4 @@ const UpdateBlog = () => {
   );
 };
 
-export default UpdateBlog;
+export default UpdatePage;
