@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import Image from "next/image";
 import styles from "./component.module.css";
 import logo from "@/images/blog-logo.svg";
@@ -7,13 +7,15 @@ import Link from "next/link";
 import { AuthLinks } from "./authlinks/AuthLinks";
 import Tooltip from "@mui/material/Tooltip";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import {  useState } from "react";
 import { useSession } from "next-auth/react";
+
 const Sidebar = () => {
   const pathName = usePathname();
-  const session = useSession()
-  const userInfo = session?.data?.user;
   const [open, setOpen] = useState(true);
+  const session = useSession();
+  console.log(session);
+   const userInfo = session?.data?.user;
   const links = [
     {
       path: "/",

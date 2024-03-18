@@ -1,3 +1,4 @@
+"use  client"
 import Link from "next/link";
 import styles from "../component.module.css";
 import css from "./auth.module.css"
@@ -16,12 +17,9 @@ export const AuthLinks = ({ open }) => {
   const [isOpen, setIsOpen] = useState(false);
   const pathName = usePathname();
   const { status, data } = useSession();
-  //console.log(data);
   const handleClick = () => {
-    console.log("clicked");
     setIsOpen(!isOpen);
   };
-  //console.log(data);
   return (
     <>
       {status === "unauthenticated" ? (

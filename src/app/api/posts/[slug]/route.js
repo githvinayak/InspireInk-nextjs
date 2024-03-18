@@ -28,29 +28,6 @@ export const GET = async (req, { params }) => {
   }
 };
 
-//delete a blog
-export const DELETE = async (req, { params }) => {
-  const { slug } = params;
-  
-  if (!slug) {
-    return new NextResponse(
-      JSON.stringify({ message: 'Missing required fields' }, { status: 400})
-    );
-  }
-  try {
-     await prisma.post.delete({
-      where: { slug },
-    });
-    // console.log(post);
-    return new NextResponse(JSON.stringify({ message: "post deleted successfully" }, { status: 200 }));
-  } catch (err) {
-    console.log(err);
-    return new NextResponse(
-      JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
-    );
-  }
-};
-
 //update a blog
 export const POST = async (req) => {
   const session = await getAuthSession();
