@@ -3,12 +3,17 @@ import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import prisma from "../../prisma/connect";
 import { getServerSession } from "next-auth";
+import NextAuth from "next-auth";
+import { authConfig } from "./auth.config";
 
-export const authOptions = {
+export const {
+  handlers: { GET, POST },
+  auth,
+  signIn,
+  signOut,
+} = NextAuth({
+  ...authConfig,
   adapter: PrismaAdapter(prisma),
-  pages: {
-    signIn: "/login",
-  },
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID,
@@ -19,41 +24,5 @@ export const authOptions = {
       clientSecret: process.env.GOOGLE_SECRET,
     }),
   ],
-  callbacks: {
-    // FOR MORE DETAIL ABOUT CALLBACK FUNCTIONS CHECK https://next-auth.js.org/configuration/callbacks
-    async jwt({ token, account,user }) {
-      // Persist the OAuth access_token to the token right after signin
-      if (account) {
-        token.userId = account.userId,
-        token.role = user.role
-      }
-      return token
-    },
-    async session({ session, token}) {
-      // Send properties to the client, like an access_token from a provider.
-      session.role = token.role,
-      session.userId = token.userId
-      return session
-    },
-    authorized({ auth, request }) {
-      const user = auth?.user;
-      const isOnAdminPanel = request.nextUrl?.pathname.startsWith("/admin");
-      const isOnLoginPage = request.nextUrl?.pathname.startsWith("/login");
-
-      // ONLY ADMIN CAN REACH THE ADMIN DASHBOARD
-
-      if (isOnAdminPanel && !user?.isAdmin) {
-        return false;
-      }
-      // ONLY UNAUTHENTICATED USERS CAN REACH THE LOGIN PAGE
-
-      if (isOnLoginPage && user) {
-        return Response.redirect(new URL("/", request.nextUrl));
-      }
-
-      return true
-    },
-  },
-};
-
-export const getAuthSession = () => getServerSession(authOptions);
+});
+//export const getAuthSession = () => getServerSession(authOptions);
