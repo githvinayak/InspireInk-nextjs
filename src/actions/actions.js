@@ -1,8 +1,7 @@
 "use server"
-
-import { getAuthSession } from "@/lib/auth";
 import prisma from "../../prisma/connect";
 import { NextResponse } from "next/server";
+import { getAuthSession } from "@/app/api/auth/[...nextauth]/route";
 
 //fetch all users
 export const allUsers = async (req, res) => {

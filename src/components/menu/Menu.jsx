@@ -1,6 +1,4 @@
 "use client"
-import Link from "next/link";
-import Image from "next/image";
 import CategoryList from "../CategoryList";
 import useSWR from "swr";
 import MenuSkeleton from "./MenuSkeleton"
@@ -13,18 +11,15 @@ const fetcher = async (url) => {
   const data = await res.json();
 
   if (!res.ok) {
-    const error = new Error(eror.message);
-    throw data;
+    const error = new Error(data.message);
+    throw error;
   }
   return data;
 };
 
 
-const Menu = async({cat}) => {
-
-  const { data, isLoading } = useSWR(
-    "http://localhost:3000/api/posts/popular",
-    fetcher
+const Menu = ({cat}) => {
+  const { data,isLoading } = useSWR("http://localhost:3000/api/posts/popular",fetcher
   );
   return (
     <>

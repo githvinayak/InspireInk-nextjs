@@ -20,7 +20,7 @@ const Note = ({ post }) => {
           )}
         </div>
         <div className="flex flex-col flex-[2] justify-around items-start gap-[4px]">
-            <div className="flex gap-[4px]"><span className="text-accent text-[14px]">{post.user.name}</span><span className=" text-gray-500 text-[12px]">shared:{moment(post.createdAt).startOf('hour').fromNow()}</span></div>
+            <div className="flex gap-[4px]"><span className="text-accent text-[14px]">{post.user.username}</span><span className=" text-gray-500 text-[12px]">shared:{moment(post.createdAt).startOf('hour').fromNow()}</span></div>
             <h2 className="text-white font-bold capitalize text-[15px]">{post.content}</h2>
             <Link href={`/posts/${post.path}`} className=" bg-accent text-[13px] text-white font-semibold rounded-lg px-[5px] py-[2px]">Check Now</Link>
         </div>

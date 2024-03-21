@@ -1,11 +1,8 @@
-"use  client"
 import Link from "next/link";
-import styles from "../component.module.css";
 import css from "./auth.module.css"
-import { usePathname } from "next/navigation";
 import * as Icons from "lucide-react";
 import Tooltip from "@mui/material/Tooltip";
-import { signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import { IoMdLogOut } from "react-icons/io";
 import { useState } from "react";
 import Image from "next/image";
@@ -13,10 +10,9 @@ import { RxCross1 } from "react-icons/rx";
 import Notes from "../notes/Notes";
 import Input from "../notes/Input";
 
-export const AuthLinks = ({ open }) => {
+
+export const AuthLinks =({ open ,status,data}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const pathName = usePathname();
-  const { status, data } = useSession();
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
@@ -40,11 +36,22 @@ export const AuthLinks = ({ open }) => {
         </Tooltip>
       ) : (
         <div className='flex flex-col'>
+         { data?.user?.role === "ADMIN" &&  (<Link
+            href='/write'
+            className="relative bg-primary flex items-center py-4 px-3 my-2 font-medium rounded-md cursor-pointer transition-all hover:opacity-[.9] text-white"
+          >
+          <Icons.LayoutDashboard className='text-accent' />
+            <span
+              className={` overflow-hidden transition-all ${
+                open ? "w-0" : "w-52 text-[1.1rem] ml-3"
+              }`}
+            >
+              Dashboard
+            </span>
+          </Link>)}
           <Link
             href='/write'
-            className={`relative bg-primary flex items-center py-4 px-3 my-2 font-medium rounded-md cursor-pointer transition-all hover:opacity-[.9] text-white ${
-              pathName === "write" && styles.active
-            }`}
+            className={`relative bg-primary flex items-center py-4 px-3 my-2 font-medium rounded-md cursor-pointer transition-all hover:opacity-[.9] text-white`}
           >
             <Icons.PencilLine className='text-accent' />{" "}
             <span

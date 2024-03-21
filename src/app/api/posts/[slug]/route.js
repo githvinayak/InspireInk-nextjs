@@ -1,7 +1,8 @@
 "use server"
 import prisma from "../../../../../prisma/connect"
 import { NextResponse } from "next/server";
-import { getAuthSession } from "@/lib/auth";
+import { getAuthSession } from "../../auth/[...nextauth]/route";
+
 
 export const GET = async (req, { params }) => {
   const { slug } = params;

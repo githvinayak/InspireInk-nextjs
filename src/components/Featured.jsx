@@ -66,10 +66,10 @@ const Featured = () => {
                 The point of using Lorem Ipsum
               </p>
             </div>
-            <div class='flex items-center'>
-              <div class='flex-1 border-t-2 border-gray-200'></div>
-              <span class='px-3 text-[11px] text-text'>24-02-2024</span>
-              <div class='flex-1 border-t-2 border-gray-200'></div>
+            <div className='flex items-center'>
+              <div className='flex-1 border-t-2 border-gray-200'></div>
+              <span className='px-3 text-[11px] text-text'>24-02-2024</span>
+              <div className='flex-1 border-t-2 border-gray-200'></div>
             </div>
             <div className='relative'>
               <Image
@@ -83,10 +83,10 @@ const Featured = () => {
             </div>
           </div>
           <div className='flex max-xsmall:justify-center max-xsmall:items-start max-lg:hidden max-md:flex max-xsmall:h-auto max-xsmall:w-auto border-r-2 border-l-2 max-md:border-0 box-border px-6 max-sm:px-0 max-md:px-2 py-2 text-text gap-3 flex-col flex-[3]'>
-          <div class='hidden max-md:flex max-xsmall:w-[300px] max-2xsmall:w-[250px] items-center'>
-              <div class='flex-1 border-t-2 border-gray-200'></div>
-              <span class='px-3 text-[11px] text-text'>24-02-2024</span>
-              <div class='flex-1 border-t-2 border-gray-200'></div>
+          <div className='hidden max-md:flex max-xsmall:w-[300px] max-2xsmall:w-[250px] items-center'>
+              <div className='flex-1 border-t-2 border-gray-200'></div>
+              <span className='px-3 text-[11px] text-text'>24-02-2024</span>
+              <div className='flex-1 border-t-2 border-gray-200'></div>
             </div>
             <div>
               <h1 className='font-bold text-[24px] max-md:text-[20px] max-sm:text-[18px] max-xsmall:text-[16px]   '>
@@ -108,10 +108,10 @@ const Featured = () => {
                 nisi ut aliquip ex ea commodo consequat.
               </p>
             </div>
-            <div class='hidden max-md:flex max-xsmall:w-[300px] max-2xsmall:w-[250px]  items-center'>
-              <div class='flex-1 border-t-2 border-gray-200'></div>
-              <span class='px-3 text-[11px] text-text'>24-02-2024</span>
-              <div class='flex-1 border-t-2 border-gray-200'></div>
+            <div className='hidden max-md:flex max-xsmall:w-[300px] max-2xsmall:w-[250px]  items-center'>
+              <div className='flex-1 border-t-2 border-gray-200'></div>
+              <span className='px-3 text-[11px] text-text'>24-02-2024</span>
+              <div className='flex-1 border-t-2 border-gray-200'></div>
             </div>
           </div>
           <div className='flex box-border gap-2 text-text flex-col max-md:hidden flex-[2]'>
@@ -128,10 +128,10 @@ const Featured = () => {
                 The point of using Lorem Ipsum
               </p>
             </div>
-            <div class='flex items-center'>
-              <div class='flex-1 border-t-2 border-gray-200'></div>
-              <span class='px-3 text-[11px] text-text'>24-02-2024</span>
-              <div class='flex-1 border-t-2 border-gray-200'></div>
+            <div className='flex items-center'>
+              <div className='flex-1 border-t-2 border-gray-200'></div>
+              <span className='px-3 text-[11px] text-text'>24-02-2024</span>
+              <div className='flex-1 border-t-2 border-gray-200'></div>
             </div>
             <div className='relative'>
               <Image

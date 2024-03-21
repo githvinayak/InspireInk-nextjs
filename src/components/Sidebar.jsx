@@ -7,15 +7,16 @@ import Link from "next/link";
 import { AuthLinks } from "./authlinks/AuthLinks";
 import Tooltip from "@mui/material/Tooltip";
 import { usePathname } from "next/navigation";
-import {  useState } from "react";
+import {  useState,useEffect } from "react";
 import { useSession } from "next-auth/react";
+import { singleUser } from "@/actions/actions";
 
 const Sidebar = () => {
   const pathName = usePathname();
   const [open, setOpen] = useState(true);
-  const session = useSession();
-  console.log(session);
-   const userInfo = session?.data?.user;
+  const {status,data} = useSession();
+  const userInfo = data?.user;
+  const email =userInfo?.email;
   const links = [
     {
       path: "/",
@@ -32,11 +33,11 @@ const Sidebar = () => {
       title: "About",
       icon: <Icons.BadgeInfo />,
     },
-    {
-      path: "/admin",
-      title: "Dashboard",
-      icon: <Icons.LayoutDashboard />,
-    },
+    // {
+    //   path: "/admin",
+    //   title: "Dashboard",
+    //   icon: <Icons.LayoutDashboard />,
+    // },
   ];
   return (
     <>
@@ -87,7 +88,7 @@ const Sidebar = () => {
           <hr />
           {/* <Search open={open}/> */}
           {/* <ThemeToggle open={open} /> */}
-          <AuthLinks open={open} />
+          <AuthLinks data={data} email={email} status={status} open={open} />
         </ul>
         <div className=' border-t flex p-4'>
          { userInfo?.image ? ( <Image

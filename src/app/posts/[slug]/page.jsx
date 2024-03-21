@@ -1,4 +1,3 @@
-"use client";
 import Menu from "@/components/menu/Menu";
 import styles from "./singlePage.module.css";
 import Image from "next/image";
@@ -21,12 +20,12 @@ const getData = async (slug) => {
 };
 
 const SinglePage = async ({ params }) => {
-  const { status, data: session } = useSession();
+  //const { status, data: session } = useSession();
   const { slug } = params;
   const data = await getData(slug);
-  const userEmail = session?.user?.email;
-  const authorEmail = data?.user?.email;
-  const isCurrentUserAuthor = authorEmail === userEmail
+  // const userEmail = session?.user?.email;
+  // const authorEmail = data?.user?.email;
+  // const isCurrentUserAuthor = authorEmail === userEmail
 
   return (
     <>
@@ -35,7 +34,6 @@ const SinglePage = async ({ params }) => {
           <div className={styles.textContainer}>
             <h1 className={styles.title}>{data?.title}</h1>
             <div className={styles.align}>
-              {status === "authenticated" && (
                 <div className={styles.user}>
                   {data?.user?.image && (
                     <div className={styles.userImageContainer}>
@@ -54,9 +52,8 @@ const SinglePage = async ({ params }) => {
                     </span>
                   </div>
                 </div>
-              )}
-              <div className="flex gap-2">
-                { isCurrentUserAuthor &&(<Link
+               <div className="flex gap-2">
+                { data?.user?.role === "ADMIN" &&(<Link
                   href={`/posts/update-blog/${slug}`}
                   className={styles.views}
                 >
