@@ -67,7 +67,6 @@ export const authOptions = {
     })
   ],
   callbacks: {
-
     async session({ session, token }) {
         //console.log('session token', token)
         return {
@@ -80,13 +79,9 @@ export const authOptions = {
                 role: token.role,
             }
         }
-
     },
-
     async jwt({ token, user }) {
-
         // after login jwt token and get the user data from here
-
         if (user) {
             return {
                 ...token,
@@ -97,7 +92,35 @@ export const authOptions = {
             }
         }
         return token
-    }
+    },
+    authorized({ auth, request }) {
+        const user = auth?.user;
+        //console.log(user);
+        const isOnAdminPanel = request.nextUrl?.pathname.startsWith("/admin");
+        const isOnBlogPage = request.nextUrl?.pathname.startsWith("/posts");
+        const isOnLoginPage = request.nextUrl?.pathname.startsWith("/login");
+  
+        // ONLY ADMIN CAN REACH THE ADMIN DASHBOARD
+  
+        if (isOnAdminPanel && !user?.role === "ADMIN") {
+            console.log("access denied");
+          return false;
+        }
+  
+        // ONLY AUTHENTICATED USERS CAN REACH THE BLOG PAGE
+  
+        if (isOnBlogPage && !user) {
+          return false;
+        }
+  
+        // ONLY UNAUTHENTICATED USERS CAN REACH THE LOGIN PAGE
+  
+        if (isOnLoginPage && user) {
+          return Response.redirect(new URL("/", request.nextUrl));
+        }
+  
+        return true
+      },
 },
 
 pages: {

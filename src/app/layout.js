@@ -2,8 +2,6 @@ import { Inter } from "next/font/google";
 import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
 import "./globals.css";
-import { ThemeContextProvider } from "@/context/ThemeContext";
-import ThemeProvider from "@/providers/ThemeProvider";
 import AuthProvider from "@/providers/AuthProvider";
 
 
@@ -19,8 +17,6 @@ export default function RootLayout({ children }) {
     <html lang='en'>
       <body className={inter.className}>
       <AuthProvider>
-        <ThemeContextProvider>
-          <ThemeProvider>
           <main className='flex flex-col h-screen'>
               <div className='flex flex-1 overflow-hidden'>
                 <div className='flex'>
@@ -36,8 +32,6 @@ export default function RootLayout({ children }) {
                 </article>
               </div>
             </main>
-          </ThemeProvider>
-        </ThemeContextProvider>
         </AuthProvider>
       </body>
     </html>

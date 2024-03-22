@@ -21,23 +21,18 @@ const Sidebar = () => {
     {
       path: "/",
       title: "Home",
-      icon: <Icons.Home />,
+      icon: <Icons.Home className="h-6 w-6" />,
     },
     {
       path: "/contact",
       title: "Contact",
-      icon: <Icons.Phone />,
+      icon: <Icons.Phone className="h-6 w-6"/>,
     },
     {
       path: "/about",
       title: "About",
-      icon: <Icons.BadgeInfo />,
+      icon: <Icons.BadgeInfo className="h-6 w-6"/>,
     },
-    // {
-    //   path: "/admin",
-    //   title: "Dashboard",
-    //   icon: <Icons.LayoutDashboard />,
-    // },
   ];
   return (
     <>
@@ -60,7 +55,7 @@ const Sidebar = () => {
             {open ? <Icons.ChevronLast /> : <Icons.ChevronFirst />}
           </button>
         </div>
-        <ul className=' flex-1 px-3 max-sm:p-[6px]'>
+        <ul className=' flex-1 px-3 py-2 max-sm:p-[6px]'>
           {links.map((link,index) => (
             <Tooltip
               title={link.title}
@@ -70,7 +65,7 @@ const Sidebar = () => {
             >
               <Link
                 href={link.path}
-                className={`relative flex justify-center items-center py-4 mb-2 px-3 max-sm:pl-[10px] font-medium rounded-md cursor-pointer transition-colors hover:bg-accent text-white ${
+                className={`relative flex justify-center items-center py-[.7rem] mb-2 px-[.4rem] max-sm:pl-[10px] font-medium rounded-md cursor-pointer transition-colors hover:bg-accent text-white ${
                   pathName === link.path && styles.active
                 }`}
               >
@@ -90,7 +85,7 @@ const Sidebar = () => {
           {/* <ThemeToggle open={open} /> */}
           <AuthLinks data={data} email={email} status={status} open={open} />
         </ul>
-        <div className=' border-t flex p-4'>
+        <div className=' border-t flex p-3'>
          { userInfo?.image ? ( <Image
             src={userInfo?.image} 
             width={50}

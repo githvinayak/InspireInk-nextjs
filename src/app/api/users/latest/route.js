@@ -5,14 +5,14 @@ export const GET = async (req) => {
   const POST_PER_PAGE = 5;
 
   try {
-    const posts = await prisma.post.findMany({
+    const users = await prisma.user.findMany({
       take: POST_PER_PAGE,
       orderBy: {
         createdAt: "desc",
       },
-      include: { user: true },
+      include: { Post: true },
     });
-    return new NextResponse(JSON.stringify(posts, { status: 200 }));
+    return new NextResponse(JSON.stringify(users, { status: 200 }));
   } catch (err) {
     console.log(err);
     return new NextResponse(
