@@ -48,6 +48,7 @@ model User {
   Post          Post[] 
   Feedback      Feedback[]
   Note          Note[]
+  createdAt DateTime  @default(now())
 }
 
 model VerificationToken {
