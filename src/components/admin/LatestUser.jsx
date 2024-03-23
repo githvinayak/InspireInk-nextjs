@@ -4,7 +4,6 @@ import Link from 'next/link';
 import {React, useEffect, useState} from 'react';
 import {BsPatchCheckFill} from 'react-icons/bs';
 import { RxCross2 } from "react-icons/rx";
-import Pagination from '../Pagination';
 
 const LatestUser = ({searchParams}) => {
     const [users, setUsers] = useState([]);
@@ -14,7 +13,7 @@ const LatestUser = ({searchParams}) => {
             try {
                 const res = await fetch("http://localhost:3000/api/users/latest");
                 const data = await res.json();
-                console.log(data);
+                //console.log(data);
                 if(!res.ok){
                     console.log(data.message);
                 }
@@ -47,11 +46,12 @@ const LatestUser = ({searchParams}) => {
     }
   return (
     <>
-        <div className=' overflow-x-auto  no-scrollbar'>
+        <div className=' overflow-x-auto w-[30em] rounded-lg shadow-xl flex-1 whitespace-nowrap no-scrollbar'>
         { length > 0 ? (
           <>
-              <table className='w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400'>
-                <thead className='text-xs text-gray-100 uppercase bg-sky-600 dark:bg-[#23272a] dark:text-gray-400'>
+          <h1 className=' font-bold text-white text-[18px] mb-4 '>Lastest Users</h1>
+              <table className='text-sm text-leftext-gray-500 dark:text-gray-400'>
+                <thead className='text-xs text-gray-100 whitespace-normal uppercase bg-secondary dark:text-gray-400'>
                   <tr>
                     <th scope='col' className='px-6 py-3'>
                       Date Created
@@ -77,7 +77,7 @@ const LatestUser = ({searchParams}) => {
                   {users.map((currElem, idx) =>(
                       <tr
                         key={currElem._id}
-                        className='odd:bg-gray-100 odd:dark:bg-[#23272a] even:bg-gray-50 even:dark:bg-transparent border-b dark:border-gray-700'
+                        className='odd:bg-primary even:bg-secondary   border-b dark:border-gray-700'
                       >
                         <th
                           scope='row'
@@ -106,7 +106,7 @@ const LatestUser = ({searchParams}) => {
                         <td className='px-6 py-4'>{currElem.email}</td>
                         <td className='px-6 py-4 flex ml-3 mt-3'>
                           {currElem.role ==="ADMIN" ? (
-                            <BsPatchCheckFill className=' text-sky-600 text-lg' />
+                            <BsPatchCheckFill className=' text-sky-400 text-lg' />
                           ) : (
                             <RxCross2 className='text-red-500 text-bold text-lg' />
                           )}
@@ -140,16 +140,16 @@ const LatestUser = ({searchParams}) => {
             role='dialog'
             aria-modal='true'
           >
-            <div className='fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity'></div>
+            <div className='fixed inset-0 bg-secondary bg-opacity-75 transition-opacity'></div>
 
             <div className='fixed inset-0 z-10 w-screen overflow-y-auto'>
               <div className='flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0'>
-                <div className='relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg'>
-                  <div className='bg-white dark:bg-[rgb(35,39,42)] px-4 pb-4 pt-5 sm:p-6 sm:pb-4'>
+                <div className='relative transform overflow-hidden rounded-lg bg-primary text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg'>
+                  <div className=' px-4 pb-4 pt-5 sm:p-6 sm:pb-4'>
                     <div className='sm:flex sm:items-start'>
-                      <div className='mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 dark:bg-red-200 sm:mx-0 sm:h-10 sm:w-10'>
+                      <div className='mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-secondary  sm:mx-0 sm:h-10 sm:w-10'>
                         <svg
-                          className='h-6 w-6 text-red-600'
+                          className='h-6 w-6 text-accent'
                           fill='none'
                           viewBox='0 0 24 24'
                           stroke-width='1.5'
@@ -168,7 +168,7 @@ const LatestUser = ({searchParams}) => {
                           className='text-base font-semibold leading-6 text-gray-900 dark:text-gray-200'
                           id='modal-title'
                         >
-                          Delete User
+                          Delete Post
                         </h3>
                         <div className='mt-2'>
                           <p className='text-sm dark:text-gray-400 text-gray-500'>
@@ -179,18 +179,18 @@ const LatestUser = ({searchParams}) => {
                       </div>
                     </div>
                   </div>
-                  <div className='dark:bg-[rgb(35,39,42)] px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6'>
+                  <div className='bg-primary px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6'>
                     <button
                       onClick={handleDelete}
                       type='button'
-                      className='inline-flex w-full justify-center rounded-md bg-red-600 dark:bg-red-800/90 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 dark:hover:bg-red-600/50 sm:ml-3 sm:w-auto'
+                      className='inline-flex w-full justify-center rounded-md bg-accent px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#8ebbffb6] sm:ml-3 sm:w-auto'
                     >
                       Delete
                     </button>
                     <button
                       onClick={() => setShowModals(false)}
                       type='button'
-                      className='mt-3 inline-flex w-full justify-center rounded-md bg-white dark:bg-gray-400 dark:text-gray-900 hover:dark:bg-gray-500 hover:bg-gray-200 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300  sm:mt-0 sm:w-auto'
+                      className='mt-3 inline-flex w-full justify-center rounded-md bg-secondary px-3 py-2 text-sm font-semibold text-white shadow-sm  sm:mt-0 sm:w-auto'
                     >
                       Cancel
                     </button>

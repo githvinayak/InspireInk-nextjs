@@ -1,18 +1,18 @@
 "use client"
+import {React, useEffect, useState} from 'react';
+import { Tooltip } from "@mui/material";
 import Image from 'next/image';
 import Link from 'next/link';
-import {React, useEffect, useState} from 'react';
-import {BsPatchCheckFill} from 'react-icons/bs';
-import { RxCross2 } from "react-icons/rx";
+import { FaEye } from "react-icons/fa6";
 import Pagination from '../Pagination';
 
-const AllUser = ({page}) => {
+const AllPosts = ({page}) => {
     const [data, setData] = useState([]);
     const [showModals, setShowModals] = useState(false);
     useEffect(()=>{
         const fetchUsers = async(page)=>{
             try {
-                const res = await fetch(`http://localhost:3000/api/users?page=${page}`);
+                const res = await fetch(`http://localhost:3000/api/posts?page=${page}`);
                 const info = await res.json();
                 console.log(info);
                 if(!res.ok){
@@ -27,7 +27,7 @@ const AllUser = ({page}) => {
         }
         fetchUsers(page);
     },[])
-    const {users,count} = data;
+    const {posts,count} = data;
     const POST_PER_PAGE = 6;
     const hasPrev = POST_PER_PAGE*(page-1) > 0;
     const hasNext = POST_PER_PAGE*(page-1) + POST_PER_PAGE < count;
@@ -54,30 +54,32 @@ const AllUser = ({page}) => {
         <div className=' overflow-x-auto w-full rounded-lg shadow-xl flex-1 whitespace-nowrap no-scrollbar'>
         { length > 0 ? (
           <>
-          <h1 className=' font-bold text-white text-[18px] mb-4 '>Lastest Users</h1>
               <table className='text-sm w-full text-leftext-gray-500 dark:text-gray-400'>
-                <thead className='text-xs whitespace-normal uppercase bg-secondary text-gray-400'>
-                  <tr>
+              <thead className='text-xs whitespace-normal uppercase bg-secondary text-gray-400'>
+                <tr>
                     <th scope='col' className='px-6 py-3'>
                       Date Created
                     </th>
                     <th scope='col' className='px-6 py-3'>
-                      User Id
+                      Post ID
                     </th>
                     <th scope='col' className='px-6 py-3'>
-                      User Image
+                      Post Image
                     </th>
                     <th scope='col' className='px-6 py-3'>
-                      Username
+                      Post Title
                     </th>
                     <th scope='col' className='px-6 py-3'>
-                      Email
+                      Category
                     </th>
                     <th scope='col' className='px-6 py-3'>
-                      No. of Posts
+                      Author
                     </th>
                     <th scope='col' className='px-6 py-3'>
-                      Admin
+                      View
+                    </th>
+                    <th scope='col' className='px-6 py-3'>
+                      Edit
                     </th>
                     <th scope='col' className='px-6 py-3'>
                       Delete
@@ -85,7 +87,7 @@ const AllUser = ({page}) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {users.map((currElem, idx) =>(
+                  {posts.map((currElem, idx) =>(
                       <tr
                         key={currElem._id}
                         className='odd:bg-primary even:bg-secondary   border-b dark:border-gray-700'
@@ -101,42 +103,41 @@ const AllUser = ({page}) => {
                         </td>
                         <td className='px-6 py-4'>
                             <Image
-                              src={currElem.image}
+                              src={currElem.img}
                               alt='user'
                               width={80}
                               height={80}
                               className='w-10 h-10 object-cover bg-gray-500 rounded-full'
                             />
                         </td>
-                        <td className='px-6 py-4'>
-                          <span
-                            className='font-medium dark:text-gray-400 text-black'
-                          >
-                            {currElem.name.length < 15
-                              ? currElem.name
-                              : currElem.name.slice(0, 15) + "..."}
-                          </span>
+                        <Tooltip title={currElem.title} placement='top'>
+                      <td className='px-6 py-4'>
+                        <span className='font-medium dark:text-gray-400 text-black'>
+                          {currElem.title.length < 15
+                            ? currElem.title
+                            : currElem.title.slice(0, 15) + "..."}
+                        </span>
+                      </td>
+                    </Tooltip>
+                        <td className='px-6 py-4'>{currElem.catSlug}</td>
+                        <td className='px-6 py-4'>{currElem.user.name}</td>
+                        <td className='px-6 py-4 flex ml-3 mt-[.6rem]'>
+                          <Link className='font-medium text-black bg-white rounded-full hover:underline text-[18px]' href={`/posts/${currElem.slug}`}><FaEye /></Link>
                         </td>
-                        <td className='px-6 py-4'>{currElem.email}</td>
-                        <td className='px-6 py-4'>{currElem.Post.length}</td>
-                        <td className='px-6 py-4 flex ml-3 mt-3'>
-                          {currElem.role ==="ADMIN" ? (
-                            <BsPatchCheckFill className=' text-sky-400 text-lg' />
-                          ) : (
-                            <RxCross2 className='text-red-500 text-bold text-lg' />
-                          )}
+                        <td className='px-6 py-4 ml-3 mt-[.6rem] '>
+                          <Link className='font-medium text-accent hover:underline' href={`/posts/update-blog/${currElem.slug}`}>Edit</Link>
                         </td>
-                        <td className='px-6 py-4'>
-                          <a
+                        <td className='px-6 py-4 '>
+                          <button
                             onClick={(e) => {
                               e.preventDefault();
                               setShowModals(true);
                             }}
                             href='#'
-                            className='font-medium text-red-500 dark:text-red-500 hover:underline'
+                            className='font-medium text-red-500 hover:underline'
                           >
                             Delete
-                          </a>
+                          </button>
                         </td>
                       </tr>
                     )
@@ -220,4 +221,4 @@ const AllUser = ({page}) => {
   )
 }
 
-export default AllUser;
+export default AllPosts;

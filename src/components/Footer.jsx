@@ -30,9 +30,9 @@ const Footer = () => {
         <div className=" flex-[1] flex gap-4 flex-col">
           <div className="flex gap-2">
             <Image src={logo} alt='logo' width={50} height={50} />
-            <h2 className="text-[22px] max-md:text-[18px] font-bold">InsightInk</h2>
+            <h2 className="text-[22px] max-md:text-[18px] text-white font-bold">InsightInk</h2>
           </div>
-          <p className="text-[15px] text-justify text-gray-700 ">
+          <p className="text-[15px] font-medium text-justify text-gray-500 ">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500s.
@@ -44,27 +44,27 @@ const Footer = () => {
           </div>
         </div>
         <div className=" flex-[1]  flex-wrap gap-[50px] flex flex-row">
-          <div className="flex flex-[1] flex-col">
-          <span className="text-[18px] max-md:text-[14px] font-bold">Links</span>
+          <div className="flex flex-[1] gap-2 flex-col">
+          <span className="text-[18px]  mb-4 max-md:text-[14px] text-white font-bold">Links</span>
           {
             links.map((link)=>(
-              <Link href="#" key={link.title} className="hover:text-red-600 " >{link.title}</Link>
+              <Link href="#" key={link.title} className="hover:text-accent text-gray-600 font-medium" >{link.title}</Link>
             ))
           }
           </div>
-          <div className="flex flex-[1] flex-col">
-          <span className="text-[18px] max-md:text-[15px] font-bold">Tags</span>
+          <div className="flex flex-[1] gap-2 flex-col">
+          <span className="text-[18px]  mb-4 max-md:text-[15px] text-white font-bold">Tags</span>
           {
             tags.map((link)=>(
-              <Link href="#" key={link.title} className="hover:text-red-600 " >{link.title}</Link>
+              <Link href="#" key={link.title} className="hover:text-accent text-gray-600 font-medium" >{link.title}</Link>
             ))
           }
           </div>
-          <div className="flex flex-[1] flex-col">
-          <span className="text-[18px] max-md:text-[15px] font-bold">Socials</span>
+          <div className="flex flex-[1] gap-2 flex-col">
+          <span className="text-[18px] mb-4 max-md:text-[15px] text-white  font-bold">Socials</span>
           {
             socials.map((link)=>(
-              <Link href="#" key={link.title} className="hover:text-red-600 " >{link.title}</Link>
+              <Link href="#" key={link.title} className="hover:text-accent text-gray-600 font-medium " >{link.title}</Link>
             ))
           }</div>
         </div>

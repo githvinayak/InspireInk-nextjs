@@ -11,10 +11,11 @@ export const GET = async (req) => {
   const query = {
     take: USER_PER_PAGE,
     skip: USER_PER_PAGE * (page - 1),
+    include:{Post : true}
   };
   try {
     const users = await prisma.user.findMany(query);
-    const count = await prisma.user.count()
+    const count = await prisma.user.count();
     const userInfo = {
       users,
       count

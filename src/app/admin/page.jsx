@@ -10,11 +10,7 @@ const page = () => {
         <div className='flex flex-col gap-10'>
           <Greeting />
           <Count />
-          {/* <div className="flex justify-around items-center max-lg:flex-col gap-4">
-            <div className="flex-[1] rounded-lg overflow-hidden shadow-xl"><LatestPosts /></div>
-            <div className="flex-[1] overflow-hidden  shadow-xl"><LatestUser /></div>
-          </div> */}
-          <div className="flex justify-normal items-center gap-4 max-lg:flex-col">
+          <div className="flex gap-8 max-lg:flex-col">
           <LatestPosts />
           <LatestUser />
           </div>

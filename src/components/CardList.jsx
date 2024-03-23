@@ -11,7 +11,6 @@ const getData = async (page, cat) => {
       cache: "no-store",
     }
   );
-
   if (!res.ok) {
     throw new Error("Failed");
   }
@@ -21,7 +20,7 @@ const getData = async (page, cat) => {
 
 const CardList = async({page,cat}) => {
  // console.log(page,cat)
-  const {posts,count} = await getData(page,cat);
+  const {posts,count}= await getData(page,cat);
  ;
    const POST_PER_PAGE = 6;
   const hasPrev = POST_PER_PAGE*(page-1) > 0;

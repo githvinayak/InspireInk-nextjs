@@ -16,6 +16,7 @@ export const GET = async (req) => {
     where: {
       ...(cat && { catSlug: cat }),
     },
+    include:{user:true}
   };
   
   try {
