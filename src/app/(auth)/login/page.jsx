@@ -107,8 +107,8 @@ const LoginPage = () => {
                 />
                 <label className={styles.label}>Password</label>
               </div>
+              {error && <span className="text-red-600 ">{error}</span>}
               <div className={styles.btn}>
-              {error && <span className="text-red-600 mx-2 px-2">{error}</span>}
                 <button type='submit'>{pending ? 'SIGNING in...' : 'SIGN IN'}</button>
               </div>
             </form>

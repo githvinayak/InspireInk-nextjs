@@ -13,7 +13,7 @@ const RegisterPage = () => {
   const router = useRouter();
 
   const [userInfo, setUserInfo] = useState({
-    username: "",
+    name: "",
     email: "",
     password: "",
   });
@@ -31,14 +31,14 @@ const RegisterPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!userInfo.username || !userInfo.email || !userInfo.password) {
+    if (!userInfo.name || !userInfo.email || !userInfo.password) {
       setError("Must provide all the Credentials!");
     }
 
     try {
       setPending(true);
 
-      const res = await fetch("/api/register", {
+      const res = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -78,13 +78,13 @@ const RegisterPage = () => {
               <div className={styles.inputContainer}>
                 <input
                   className={styles.input}
-                  id='username'
+                  id='name'
                   type='text'
-                  name='username'
-                  value={userInfo.username}
+                  name='name'
+                  value={userInfo.name}
                   onChange={handleChange}
                   required
-                  placeholder='Enter your username'
+                  placeholder='Enter your name'
                 />
                 <label className={styles.label} >
                   Username
@@ -120,8 +120,8 @@ const RegisterPage = () => {
                   Password
                 </label>
               </div>
+              {error && <span className="text-red-600">{error}</span>}
               <div className={styles.btn}>
-              {error && <span className="text-red-600 mx-2 px-2">{error}</span>}
                 <button type='submit'>{pending ? 'Registering' : 'SIGN UP'}</button>
               </div>
             </form>

@@ -1,17 +1,17 @@
 import { NextResponse } from "next/server";
-import prisma from "../../../../../prisma/prismadb"
+import prisma from "../../../../../prisma/connect"
 import bcrypt from 'bcrypt'
 
 export async function POST(req, res) {
     try {
 
-        const { username, email, password } = await req.json();
-        console.log({ username, email, password });
+        const { name, email, password } = await req.json();
+        console.log({ name, email, password });
 
         const exists = await prisma.user.findFirst({
             where: {
                 OR: [
-                    { username: username },
+                    { name: name },
                     { email: email }
                 ]
             }
@@ -27,7 +27,7 @@ export async function POST(req, res) {
         const hashedPassword = await bcrypt.hash(password, 10);
         await prisma.user.create({
             data: {
-                username: username,
+                name: name,
                 email: email,
                 password: hashedPassword
             }
