@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Note = ({ post }) => {
-  console.log(post);
   return (
     <>
       <div className='bg-primary rounded-lg px-1 py-1 w-full flex justify-center items-center h-[130px]'>

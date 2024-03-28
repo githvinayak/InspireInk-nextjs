@@ -23,12 +23,12 @@ const Notes = () => {
     `http://localhost:3000/api/notes`,
     fetcher
   );
-
+console.log(data);
   return (
       <div className='flex flex-col gap-4 no-scrollbar overflow-y-auto w-full'>
         {isLoading
           ? <Skeleton/>
-          : data?.map((item, idx) => <Note post={item} key={idx} />)
+          : data?.map((item, idx) => (<Note post={item} key={idx} />))
           }
       </div>
   );

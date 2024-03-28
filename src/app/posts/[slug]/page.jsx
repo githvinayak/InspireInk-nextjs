@@ -4,7 +4,6 @@ import Image from "next/image";
 import Comments from "@/components/comments/Comments";
 import { FaEye } from "react-icons/fa";
 import { GrEdit } from "react-icons/gr";
-import { useSession } from "next-auth/react";
 import Link from "next/link";
 
 const getData = async (slug) => {

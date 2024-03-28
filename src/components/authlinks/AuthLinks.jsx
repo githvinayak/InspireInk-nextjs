@@ -76,13 +76,20 @@ export const AuthLinks = ({ open, status, data }) => {
               Write
             </span>
           </Link>
-          {data?.user?.image && (
             <div
               onClick={handleClick}
               className={`relative bg-primary flex justify-center items-center py-1 px-[.4rem]  my-[.5rem]font-medium rounded-md cursor-pointer transition-all hover:opacity-[.9] text-white`}
             >
               <div className='relative'>
-                <Image
+              {data?.user?.image === null ? 
+                (<Image
+            src='https://ui-avatars.com/api/?background=0D8ABC&color=fff'
+            width={50}
+            height={50}
+            className='w-10 h-10 rounded-md'
+            alt='pic'
+          />):
+              (<Image
                   src={data?.user?.image}
                   width={200}
                   height={200}
@@ -90,7 +97,7 @@ export const AuthLinks = ({ open, status, data }) => {
                     open ? "ml-0 w-7 h-7" : " w-11 h-11"
                   } h-11 rounded-full`}
                   alt='pic'
-                />
+                />)}
                 <div className='absolute top-0  right-0'>
                   <span
                     className={`relative flex ${open ? "h-3 w-3" : "h-4 w-4"}`}
@@ -112,7 +119,6 @@ export const AuthLinks = ({ open, status, data }) => {
                 Post Updates
               </span>
             </div>
-          )}
           {isOpen && (
             <div className='absolute top-0 z-[999] py-2 px-6 right-0 h-screen w-[350px] bg-secondary gap-8 flex flex-col justify-between '>
               <div className='flex justify-between bg-primary px-2 h-[50px] rounded-md font-bold text-white overflow-hidden items-center w-full'>

@@ -15,6 +15,7 @@ const Sidebar = () => {
   const pathName = usePathname();
   const [open, setOpen] = useState(true);
   const {status,data} = useSession();
+  console.log(data);
   const userInfo = data?.user;
   const email =userInfo?.email;
   const links = [
@@ -105,7 +106,7 @@ const Sidebar = () => {
             }`}
           >
            <div className='leading-5'>
-              {userInfo?.name ? (<h4 className='font-semibold text-white text-[1.15rem]'>{userInfo?.name}</h4>): (<h4 className='font-semibold text-white text-[1.15rem]'>Username</h4>)}
+              {userInfo?.name ? (<h4 className='font-semibold text-white capitalize text-[1.15rem]'>{userInfo?.name}</h4>): (<h4 className='font-semibold text-white text-[1.15rem]'>Username</h4>)}
              {userInfo?.email ? ( <span className='text-xs text-gray-400 '>{userInfo?.email}</span>): ( <span className='text-xs text-gray-400 '>Useremail</span>)}
             </div>
           </div>
